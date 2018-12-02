@@ -7,10 +7,10 @@ mod one;
 fn main() {
     let args: Vec<String> = env::args().collect();
 
-    let problem = args[1].as_str();
-    let filename = &args[2];
-
+    let problem = &args[1];
+    let filename = &format!("inputs/{}.txt", problem);
     let input = &mut String::new();
+
     let f = File::open(filename)
         .and_then(|mut f| { f.read_to_string(input) });
 
@@ -19,7 +19,7 @@ fn main() {
         return;
     }
 
-    match problem {
+    match problem.as_str() {
         "one" => one::solve(input),
         _ => println!("Dunno mate")
     };
