@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::Read;
 
 mod one;
+mod two;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -20,6 +21,7 @@ fn main() {
 
     match problem.as_str() {
         "one" => one::solve(input),
-        _ => println!("Dunno mate")
+        "two" => two::solve(input),
+        _ => println!("Dunno mate"),
     };
 }
