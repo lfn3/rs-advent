@@ -1,13 +1,11 @@
 use std::collections::HashSet;
 
-pub fn solve(s: &String)
-{
+pub fn solve(s: &String) {
     let (s1, s2) = testable_solve(s);
     println!("Solutions are: {}, {}", s1, s2)
 }
 
-fn testable_solve(s: &String) -> (i32, i32)
-{
+fn testable_solve(s: &String) -> (i32, i32) {
     (solve_part_one(s), solve_part_two(s))
 }
 
@@ -20,10 +18,9 @@ fn should_solve_sample_input() {
     assert_eq!((3, 2), testable_solve(&"+1\n-2\n+3\n+1\n".to_string()));
 }
 
-fn solve_part_one(s: &String) -> i32
-{
+fn solve_part_one(s: &String) -> i32 {
     s.lines()
-        .map(|l| { l.parse().unwrap() })
+        .map(|l| l.parse().unwrap())
         .fold(0, |acc, change: i32| acc + change)
 }
 
@@ -41,22 +38,19 @@ fn solve_part_two(s: &String) -> i32 {
     initial_set.insert(0);
 
     s.lines()
-        .map(|l| { l.parse().unwrap() })
+        .map(|l| l.parse().unwrap())
         .cycle()
-        .scan((0, initial_set),
-              |(acc, seen), change: i32|
-                  {
-                      *acc += change;
+        .scan((0, initial_set), |(acc, seen), change: i32| {
+            *acc += change;
 
-                      if seen.contains(acc) {
-                          return Some(Some(acc.clone()))
-                      }
+            if seen.contains(acc) {
+                return Some(Some(acc.clone()));
+            }
 
-                      seen.insert(acc.clone());
+            seen.insert(acc.clone());
 
-                      return Some(None); //This is weird, but scan stops as soon as you return None
-                  })
-        .find(|v| v.is_some())
+            return Some(None); //This is weird, but scan stops as soon as you return None
+        }).find(|v| v.is_some())
         .unwrap()
         .unwrap()
 }
