@@ -1,0 +1,6 @@
+[package]
+name = "rs-advent"
+version = "0.1.0"
+authors = ["Liam Falconer <liam@lfn3.net>"]
+
+[dependencies]
