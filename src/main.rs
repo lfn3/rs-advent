@@ -7,6 +7,7 @@ use std::io::Read;
 mod one;
 mod two;
 mod five;
+mod eight;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -26,6 +27,7 @@ fn main() {
         "one" => one::solve(input),
         "two" => two::solve(input),
         "five" => five::solve(input),
+        "eight" => eight::solve(input),
         _ => println!("Dunno mate"),
     };
 }
