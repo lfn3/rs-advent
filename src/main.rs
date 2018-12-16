@@ -6,6 +6,7 @@ use std::io::Read;
 
 mod eight;
 mod five;
+mod nine;
 mod one;
 mod two;
 
@@ -28,6 +29,7 @@ fn main() {
         "two" => two::solve(input),
         "five" => five::solve(input),
         "eight" => eight::solve(input),
+        "nine" => nine::solve(input),
         _ => println!("Dunno mate"),
     };
 }
